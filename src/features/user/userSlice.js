@@ -12,6 +12,8 @@ import {
   getCourseInfo,
   getClassSchedule,
   getIsFacEval,
+  getEvaluatableFaculties,
+  evaluateFaculty,
   getIsAdvising,
   getCurrentSemester,
 } from "./userApiSlice";
@@ -33,6 +35,14 @@ const userSlice = createSlice({
     isFacEval: false,
     isFacEvalLoading: false,
     isFacEvalError: null,
+
+    evaluateFacultyStatus: null,
+    evaluateFacultyLoading: false,
+    evaluateFacultyError: null,
+
+    evaluatableFaculties: [],
+    evaluatableFacultiesLoading: false,
+    evaluatableFacultiesError: null,
 
     currentSemester: null,
     currentSemesterLoading: false,
@@ -135,6 +145,16 @@ const userSlice = createSlice({
       state.currentSemesterError = null;
     },
 
+    clearEvaluateFacultyStatus: (state) => {
+      state.evaluateFacultyStatus = null;
+      state.evaluateFacultyError = null;
+    },
+
+    clearEvaluatableFaculties: (state) => {
+      state.evaluatableFaculties = [];
+      state.evaluatableFacultiesError = null;
+    },
+
     setUserLoading: (state, action) => {
       console.log("userSlice: Setting general loader state to", action.payload);
       state.loading = action.payload;
@@ -211,6 +231,12 @@ const userSlice = createSlice({
     },
     setCurrentSemesterLoading: (state, action) => {
       state.currentSemesterLoading = action.payload;
+    },
+    setEvaluateFacultyLoading: (state, action) => {
+      state.evaluateFacultyLoading = action.payload;
+    },
+    setEvaluatableFacultiesLoading: (state, action) => {
+      state.evaluatableFacultiesLoading = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -510,6 +536,43 @@ const userSlice = createSlice({
           action.error.message ||
           "Failed to fetch current semester";
         state.currentSemester = null;
+      })
+      .addCase(evaluateFaculty.pending, (state) => {
+        state.evaluateFacultyLoading = true;
+        state.evaluateFacultyError = null;
+        state.evaluateFacultyStatus = null;
+      })
+      .addCase(evaluateFaculty.fulfilled, (state, action) => {
+        state.evaluateFacultyLoading = false;
+        state.evaluateFacultyError = null;
+        state.evaluateFacultyStatus =
+          action.payload.message || "Evaluation submitted successfully";
+      })
+      .addCase(evaluateFaculty.rejected, (state, action) => {
+        state.evaluateFacultyLoading = false;
+        state.evaluateFacultyError =
+          action.payload ||
+          action.error.message ||
+          "Failed to submit evaluation";
+        state.evaluateFacultyStatus = null;
+      })
+      .addCase(getEvaluatableFaculties.pending, (state) => {
+        state.evaluatableFacultiesLoading = true;
+        state.evaluatableFacultiesError = null;
+        state.evaluatableFaculties = [];
+      })
+      .addCase(getEvaluatableFaculties.fulfilled, (state, action) => {
+        state.evaluatableFacultiesLoading = false;
+        state.evaluatableFacultiesError = null;
+        state.evaluatableFaculties = action.payload; // Store the array of faculties
+      })
+      .addCase(getEvaluatableFaculties.rejected, (state, action) => {
+        state.evaluatableFacultiesLoading = false;
+        state.evaluatableFacultiesError =
+          action.payload ||
+          action.error.message ||
+          "Failed to fetch evaluatable faculties";
+        state.evaluatableFaculties = [];
       });
   },
 });
@@ -577,6 +640,20 @@ export const selectCurrentSemesterLoading = (state) =>
 export const selectCurrentSemesterError = (state) =>
   state.user.currentSemesterError;
 
+export const selectEvaluateFacultyStatus = (state) =>
+  state.user.evaluateFacultyStatus;
+export const selectEvaluateFacultyLoading = (state) =>
+  state.user.evaluateFacultyLoading;
+export const selectEvaluateFacultyError = (state) =>
+  state.user.evaluateFacultyError;
+
+export const selectEvaluatableFaculties = (state) =>
+  state.user.evaluatableFaculties;
+export const selectEvaluatableFacultiesLoading = (state) =>
+  state.user.evaluatableFacultiesLoading;
+export const selectEvaluatableFacultiesError = (state) =>
+  state.user.evaluatableFacultiesError;
+
 export const {
   clearStudentProfile,
   clearIsFacEval,
@@ -591,11 +668,14 @@ export const {
   clearCourseList,
   clearClassSchedule,
   clearIsAdvising,
+  clearEvaluatableFaculties,
+  clearEvaluateFacultyStatus,
   setTuitionFeesLoading,
   setTuitionHistoryLoading,
   setGradeReportLoading,
   setUserLoading,
   setIsFacEvalLoading,
+  setEvaluatableFacultiesLoading,
   setFacultyLoading,
   setFacultyInfoLoading,
   setFacultyTeachesLoading,
@@ -604,6 +684,7 @@ export const {
   setClassScheduleLoading,
   setIsAdvisingLoading,
   setCurrentSemesterLoading,
+  setEvaluateFacultyLoading,
 } = userSlice.actions;
 
 export default userSlice.reducer;

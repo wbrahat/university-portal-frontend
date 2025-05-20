@@ -308,6 +308,81 @@ export const getCourseInfo = createAsyncThunk(
   },
 );
 
+export const evaluateFaculty = createAsyncThunk(
+  "user/evaluateFaculty",
+  async ({ faculty_short_id, rating }, { rejectWithValue }) => {
+    try {
+      const url = `http://localhost:8000/api/v1/eval-faculty/${faculty_short_id}`;
+      console.log(
+        "Frontend (userApiSlice): Sending evaluateFaculty POST request to:",
+        url,
+        "with body:",
+        { rating },
+      );
+
+      const response = await axios.post(
+        url,
+        { rating },
+        {
+          withCredentials: true,
+        },
+      );
+
+      console.log(
+        "Frontend (userApiSlice): evaluateFaculty fulfilled",
+        response.data,
+      );
+
+      return response.data;
+    } catch (error) {
+      console.error("Frontend (userApiSlice): evaluateFaculty failed:", error);
+
+      if (error.response) {
+        console.error(
+          "Frontend (userApiSlice): evaluateFaculty Error Response Data:",
+          error.response.data,
+        );
+      }
+    }
+  },
+);
+
+export const getEvaluatableFaculties = createAsyncThunk(
+  "user/getEvaluatableFaculties",
+  async ({ semester, year }, { rejectWithValue }) => {
+    try {
+      const url = "http://localhost:8000/api/v1/eval-faculty-list";
+
+      const response = await axios.get(url, {
+        params: {
+          semester,
+          year,
+        },
+        withCredentials: true,
+      });
+
+      console.log(
+        "Frontend (userApiSlice): getEvaluatableFaculties fulfilled",
+        response.data,
+      );
+
+      return response.data;
+    } catch (error) {
+      if (error.response) {
+        console.error(
+          "Frontend (userApiSlice): getEvaluatableFaculties Error Response Data:",
+          error.response.data,
+        );
+      } else {
+        console.error(
+          "Frontend (userApiSlice): getEvaluatableFaculties Request Setup Error:",
+          error.message,
+        );
+      }
+    }
+  },
+);
+
 export const getClassSchedule = createAsyncThunk(
   "user/getClassSchedule",
   async ({ semester_year, semester_season }, { rejectWithValue }) => {
@@ -336,8 +411,6 @@ export const getClassSchedule = createAsyncThunk(
 
       return response.data.data;
     } catch (error) {
-      console.error("Frontend (userApiSlice): getClassSchedule failed:", error);
-
       if (error.response) {
         console.error(
           "Frontend (userApiSlice): getClassSchedule Error Response Data:",
