@@ -1,0 +1,69 @@
+.profile-container {
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.profile-container h2 {
+  color: #0056b3;
+  font-size: 2em;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.profile-table-wrapper {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.profile-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  font-size: 1em;
+  color: #333;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.profile-table tr {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.profile-table tr:last-child {
+  border-bottom: none;
+}
+
+.profile-table td {
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.profile-table td.label {
+  font-weight: 600;
+  color: #0056b3;
+  width: 150px;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.profile-table td:not(.label) {
+  color: #555;
+  word-break: break-word;
+}
+
+.profile-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.profile-container p {
+  font-size: 1em;
+  margin-top: 15px;
+  text-align: center;
+}

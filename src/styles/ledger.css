@@ -1,0 +1,148 @@
+.ledger-container {
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 780px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.ledger-container h2 {
+  color: #0056b3;
+  font-size: 2em;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.view-switcher {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.switcher-button {
+  padding: 10px 20px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #007bff;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.switcher-button:hover:not(:disabled) {
+  background-color: #e9ecef;
+  color: #0056b3;
+  border-color: #0056b3;
+}
+
+.switcher-button.active {
+  background-color: #007bff;
+  color: #ffffff;
+  border-color: #007bff;
+  box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
+}
+
+.switcher-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.fees-section,
+.history-section {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.fees-section h3,
+.history-section h3 {
+  color: #0056b3;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.data-display {
+  padding: 20px;
+  border: 1px solid #e0eeef;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+}
+
+.fees-section .data-display p {
+  margin: 18px 0;
+  font-size: 1.2em;
+  background-color: #f8f9fa;
+  color: #333;
+  text-align: left;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  font-size: 1em;
+  color: #333;
+}
+
+.history-table thead {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.history-table th {
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid #0056b3;
+}
+
+.history-table tbody tr {
+  border-bottom: 1px solid #e0eeef;
+}
+
+.history-table tbody tr:nth-child(even) {
+  background-color: #f6f6f6;
+}
+
+.history-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.history-table td {
+  padding: 12px 15px;
+  text-align: left;
+  color: #161515;
+  word-break: break-word;
+}
+
+.history-table tbody tr:hover {
+  background-color: #e9ecef;
+  cursor: pointer;
+}
+
+.ledger-container > p {
+  font-size: 1em;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.fees-section > p,
+.history-section > p {
+  font-size: 1em;
+  margin-top: 15px;
+  text-align: center;
+  color: #555;
+}

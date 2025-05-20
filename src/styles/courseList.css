@@ -1,0 +1,223 @@
+.course-list-container {
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 1200px;
+  margin: 20px auto;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+.course-list-container h2 {
+  color: #0056b3;
+  font-size: 2em;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.parameter-selection {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.parameter-selection select,
+.parameter-selection button {
+  padding: 10px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1em;
+  color: #333;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.parameter-selection select:focus,
+.parameter-selection button:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.parameter-selection button {
+  background-color: #007bff;
+  color: #ffffff;
+  border-color: #007bff;
+  font-weight: 600;
+}
+
+.parameter-selection button:hover:not(:disabled) {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.parameter-selection button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.course-list-table-wrapper {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.course-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  font-size: 1em;
+  color: #333;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.course-list-table thead {
+  background-color: #007bff;
+  color: #000000;
+  display: table-header-group;
+}
+
+.course-list-table th {
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid #0056b3;
+}
+
+.course-list-table tbody tr {
+  border-bottom: 1px solid #e0eeef;
+}
+
+.course-list-table tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.course-list-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.course-list-table td {
+  padding: 12px 15px;
+  text-align: left;
+  color: #555;
+  word-break: break-word;
+}
+
+.course-list-table td button {
+  padding: 4px 7px;
+  border-radius: 5px;
+  border: 1px solid #001f40;
+  font-size: 15px;
+  cursor: pointer;
+}
+.course-list-table tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+.course-list-container > p {
+  font-size: 1em;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.course-details-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.course-details-modal-content {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.course-details-modal-content h3 {
+  color: #0056b3;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  text-align: center;
+}
+
+.course-details-modal-content h4 {
+  color: #007bff;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+  border-bottom: 1px solid #e0eeef;
+  padding-bottom: 5px;
+}
+
+.course-details-modal-content h5 {
+  color: #555;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 1.1em;
+}
+
+.course-details-modal-content p {
+  margin-bottom: 8px;
+  line-height: 1.5;
+  font-size: 1em;
+  color: #333;
+}
+
+.course-details-modal-content strong {
+  color: #0056b3;
+  margin-right: 5px;
+}
+
+.course-details-modal-content .close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.course-details-modal-content .close-button:hover {
+  color: #dc3545;
+}
+
+.course-details-modal-content p + p {
+  margin-top: 5px;
+}
+
+.section-detail-block {
+  border: 1px solid #e0eeef;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: white;
+}
+
+.section-detail-block h5 {
+  font-size: 25px;
+}
